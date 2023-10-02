@@ -71,11 +71,7 @@ macro(late_init)
 endmacro ()
 
 macro(add_plugin_libraries)
-  # Add libraries required by this plugin
-  #add_subdirectory("libs/tinyxml")
-  #target_link_libraries(${PACKAGE_NAME} ocpn::tinyxml)
-
-  add_subdirectory("libs/plugingl")
+  add_subdirectory("${CMAKE_SOURCE_DIR}/opencpn-libs/plugingl")
   target_link_libraries(${PACKAGE_NAME} ocpn::plugingl)
 
 endmacro ()
