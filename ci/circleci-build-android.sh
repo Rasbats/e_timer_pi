@@ -40,10 +40,13 @@ if [ "$PWD" != "/"  ]; then sudo ln -sf $PWD/$builddir /$builddir; fi
 # Create a log file.
 exec > >(tee $builddir/build.log) 2>&1
 
+# try deleting the cache
+rm -rf cache/*
+
 # The local container needs to access the cache directory
 test -d cache || sudo mkdir cache
 test -w cache || sudo chmod -R go+w cache || :
- 
+
 
 sudo apt -q update
 sudo apt install -q cmake git gettext
