@@ -19,6 +19,8 @@ finish-args:
     - --device=all
 
 modules:
+    - @include opencpn-libs/flatpak/glu.yaml
+
     - name: e_timer
       no-autogen: true
       buildsystem: cmake
