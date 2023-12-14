@@ -78,9 +78,12 @@ Dlg::Dlg(wxWindow* parent, e_timer_pi* ppi)
     m_duration->Hide();
     m_staticTextDuration2->Hide();
 
+    m_checkBoxDuration->SetValue(false);
+    m_checkBoxCountdown->SetValue(false);
+
     b_watchHour = false;
 
-    m_timer2.Start(1000, wxTIMER_CONTINUOUS);
+    //m_timer2.Start(1000, wxTIMER_CONTINUOUS);
 
 #ifdef __OCPN__ANDROID__
     g_Window = this;
@@ -135,7 +138,7 @@ void Dlg::OnStartTimer(wxCommandEvent& event)
     if (m_checkBoxDuration->IsChecked()) {
         m_timer1.Start(1000, wxTIMER_CONTINUOUS);
         Notify();
-    }
+    }else
     if (m_checkBoxCountdown->IsChecked()) {
         int c = m_choiceCD->GetSelection();
         wxString s = m_choiceCD->GetString(c);
@@ -166,7 +169,7 @@ void Dlg::OnStopTimer(wxCommandEvent& event)
         m_staticTextCD->Hide();
         m_staticTextCD2->Hide();
         m_choiceCD->Hide();
-    }
+    }else
     if (m_checkBoxDuration->IsChecked()) {
         m_checkBoxDuration->SetValue(false);
         m_staticTextDuration->Hide();

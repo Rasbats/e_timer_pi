@@ -71,7 +71,6 @@ macro(late_init)
 endmacro ()
 
 macro(add_plugin_libraries)
-  add_subdirectory("${CMAKE_SOURCE_DIR}/opencpn-libs/plugingl")
-  target_link_libraries(${PACKAGE_NAME} ocpn::plugingl)
+
 
 endmacro ()
