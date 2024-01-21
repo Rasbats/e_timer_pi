@@ -32,47 +32,47 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticText71 = new wxStaticText( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText71->Wrap( -1 );
-	fgSizer1->Add( m_staticText71, 0, wxALL, 5 );
+	fgSizer1->Add( m_staticText71, 0, wxALL|wxEXPAND, 5 );
 
 	m_checkBoxDuration = new wxCheckBox( this, wxID_ANY, wxT("Count Up"), wxDefaultPosition, wxDefaultSize, 0 );
-	fgSizer1->Add( m_checkBoxDuration, 0, wxALL, 5 );
+	fgSizer1->Add( m_checkBoxDuration, 0, wxALL|wxEXPAND, 5 );
 
 	m_staticText8 = new wxStaticText( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText8->Wrap( -1 );
-	fgSizer1->Add( m_staticText8, 0, wxALL, 5 );
+	fgSizer1->Add( m_staticText8, 0, wxALL|wxEXPAND, 5 );
 
 	m_staticText9 = new wxStaticText( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText9->Wrap( -1 );
-	fgSizer1->Add( m_staticText9, 0, wxALL, 5 );
+	fgSizer1->Add( m_staticText9, 0, wxALL|wxEXPAND, 5 );
 
 	m_checkBoxCountdown = new wxCheckBox( this, wxID_ANY, wxT("Count Down"), wxDefaultPosition, wxDefaultSize, 0 );
-	fgSizer1->Add( m_checkBoxCountdown, 0, wxALL, 5 );
+	fgSizer1->Add( m_checkBoxCountdown, 0, wxALL|wxEXPAND, 5 );
 
 	m_staticText10 = new wxStaticText( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText10->Wrap( -1 );
-	fgSizer1->Add( m_staticText10, 0, wxALL, 5 );
+	fgSizer1->Add( m_staticText10, 0, wxALL|wxEXPAND, 5 );
 
 	m_staticText11 = new wxStaticText( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText11->Wrap( -1 );
-	fgSizer1->Add( m_staticText11, 0, wxALL, 5 );
+	fgSizer1->Add( m_staticText11, 0, wxALL|wxEXPAND, 5 );
 
 	m_checkBoxRepeat = new wxCheckBox( this, wxID_ANY, wxT("Repeat"), wxDefaultPosition, wxDefaultSize, 0 );
-	fgSizer1->Add( m_checkBoxRepeat, 0, wxALL, 5 );
+	fgSizer1->Add( m_checkBoxRepeat, 0, wxALL|wxEXPAND, 5 );
 
 	m_staticText17 = new wxStaticText( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText17->Wrap( -1 );
-	fgSizer1->Add( m_staticText17, 0, wxALL, 5 );
+	fgSizer1->Add( m_staticText17, 0, wxALL|wxEXPAND, 5 );
 
 	m_staticText18 = new wxStaticText( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText18->Wrap( -1 );
-	fgSizer1->Add( m_staticText18, 0, wxALL, 5 );
+	fgSizer1->Add( m_staticText18, 0, wxALL|wxEXPAND, 5 );
 
 	m_checkBoxWatch = new wxCheckBox( this, wxID_ANY, wxT("Watch Hour"), wxDefaultPosition, wxDefaultSize, 0 );
-	fgSizer1->Add( m_checkBoxWatch, 0, wxALL, 5 );
+	fgSizer1->Add( m_checkBoxWatch, 0, wxALL|wxEXPAND, 5 );
 
 	m_staticText12 = new wxStaticText( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText12->Wrap( -1 );
-	fgSizer1->Add( m_staticText12, 0, wxALL, 5 );
+	fgSizer1->Add( m_staticText12, 0, wxALL|wxEXPAND, 5 );
 
 
 	bSizerMain->Add( fgSizer1, 0, wxEXPAND, 5 );
@@ -85,7 +85,7 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticTextDuration = new wxStaticText( this, wxID_ANY, wxT("Count \nUp"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticTextDuration->Wrap( -1 );
-	bSizer14111111->Add( m_staticTextDuration, 0, wxALL, 5 );
+	bSizer14111111->Add( m_staticTextDuration, 0, wxALL|wxEXPAND, 5 );
 
 	wxString m_durationChoices[] = { wxT("1"), wxT("10"), wxT("15"), wxT("20"), wxT("30"), wxT("60") };
 	int m_durationNChoices = sizeof( m_durationChoices ) / sizeof( wxString );
@@ -97,7 +97,7 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticTextDuration2 = new wxStaticText( this, wxID_ANY, wxT("Minutes"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticTextDuration2->Wrap( -1 );
-	bSizer14111111->Add( m_staticTextDuration2, 0, wxALL, 5 );
+	bSizer14111111->Add( m_staticTextDuration2, 0, wxALL|wxEXPAND, 5 );
 
 
 	bSizerMain->Add( bSizer14111111, 0, wxEXPAND, 5 );
@@ -106,7 +106,7 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticTextCD = new wxStaticText( this, wxID_ANY, wxT("Count \nDown"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticTextCD->Wrap( -1 );
-	bSizerCountdown->Add( m_staticTextCD, 0, wxALL, 5 );
+	bSizerCountdown->Add( m_staticTextCD, 0, wxALL|wxEXPAND, 5 );
 
 	wxString m_choiceCDChoices[] = { wxT("0") };
 	int m_choiceCDNChoices = sizeof( m_choiceCDChoices ) / sizeof( wxString );
@@ -118,7 +118,7 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticTextCD2 = new wxStaticText( this, wxID_ANY, wxT("Minutes"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticTextCD2->Wrap( -1 );
-	bSizerCountdown->Add( m_staticTextCD2, 0, wxALL, 5 );
+	bSizerCountdown->Add( m_staticTextCD2, 0, wxALL|wxEXPAND, 5 );
 
 
 	bSizerMain->Add( bSizerCountdown, 0, wxEXPAND, 5 );
@@ -128,7 +128,7 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticTextRepeat = new wxStaticText( this, wxID_ANY, wxT("Repeat    "), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticTextRepeat->Wrap( -1 );
-	bSizer141111111->Add( m_staticTextRepeat, 0, wxALL, 5 );
+	bSizer141111111->Add( m_staticTextRepeat, 0, wxALL|wxEXPAND, 5 );
 
 	wxString m_choiceRepeatChoices[] = { wxT("1"), wxT("10"), wxT("15"), wxT("20"), wxT("30"), wxT("60") };
 	int m_choiceRepeatNChoices = sizeof( m_choiceRepeatChoices ) / sizeof( wxString );
@@ -140,7 +140,7 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	m_staticTextRepeat2 = new wxStaticText( this, wxID_ANY, wxT("Minutes"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticTextRepeat2->Wrap( -1 );
-	bSizer141111111->Add( m_staticTextRepeat2, 0, wxALL, 5 );
+	bSizer141111111->Add( m_staticTextRepeat2, 0, wxALL|wxEXPAND, 5 );
 
 
 	bSizerMain->Add( bSizer141111111, 0, wxEXPAND, 5 );
@@ -157,7 +157,7 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	bSizer14->Add( m_textTime, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
 
 
-	bSizerMain->Add( bSizer14, 0, wxALIGN_CENTER_HORIZONTAL, 5 );
+	bSizerMain->Add( bSizer14, 0, wxALIGN_CENTER_HORIZONTAL|wxEXPAND, 5 );
 
 	bSizer71 = new wxBoxSizer( wxVERTICAL );
 
