@@ -113,7 +113,7 @@ int e_timer_pi::Init(void)
       //    This PlugIn needs a toolbar icon, so request its insertion
 	if(m_bTimerShowIcon)
 
-#ifdef PLUGIN_USE_SVG
+#ifdef ocpnUSE_SVG
 		m_leftclick_tool_id = InsertPlugInToolSVG(_T("Timer"), _svg_timer, _svg_timer, _svg_timer_toggled,
 			wxITEM_CHECK, _("Timer"), _T(""), NULL, CALCULATOR_TOOL_POSITION, 0, this);
 #else

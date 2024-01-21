@@ -12,7 +12,7 @@ extern void initialize_images(void);
 extern wxBitmap *_img_e_timer_pi;
 extern wxBitmap *_img_Timer;
 
-#ifdef PLUGIN_USE_SVG
+#ifdef ocpnUSE_SVG
 extern wxString _svg_timer;
 extern wxString _svg_timer_toggled;
 #endif
