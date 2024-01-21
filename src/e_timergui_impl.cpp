@@ -44,6 +44,16 @@
 
 #ifdef __OCPN__ANDROID__
 wxWindow* g_Window;
+bool androidPlaySound(const wxString soundfile, AndroidSound* sound) {
+  DEBUG_LOG << "androidPlaySound";
+  std::ostringstream oss;
+  oss << sound;
+  wxString wxSound(oss.str());
+  wxString result =
+      callActivityMethod_s2s("playSound", soundfile, wxSound.Mid(2));
+  return true;
+}
+
 #endif
 
 #define FAIL(X)  \
@@ -91,7 +101,7 @@ Dlg::Dlg(wxWindow* parent, e_timer_pi* ppi) : m_Dialog(parent) {
   m_timer2.Start(1000, wxTIMER_CONTINUOUS);
   m_textTime->SetValue("   00:00");
 
-#ifdef __OCPN__ANDROID__
+#ifdef __ANDROID__
   g_Window = this;
   GetHandle()->setStyleSheet(qtStyleSheet);
   Connect(wxEVT_MOTION, wxMouseEventHandler(Dlg::OnMouseEvent));
@@ -99,28 +109,6 @@ Dlg::Dlg(wxWindow* parent, e_timer_pi* ppi) : m_Dialog(parent) {
 }
 
 Dlg::~Dlg() {}
-
-#ifdef __OCPN__ANDROID__
-wxPoint g_startPos;
-wxPoint g_startMouse;
-wxPoint g_mouse_pos_screen;
-
-void Dlg::OnMouseEvent(wxMouseEvent& event) {
-  g_mouse_pos_screen = ClientToScreen(event.GetPosition());
-
-  if (event.Dragging()) {
-    int x = wxMax(0, g_startPos.x + (g_mouse_pos_screen.x - g_startMouse.x));
-    int y = wxMax(0, g_startPos.y + (g_mouse_pos_screen.y - g_startMouse.y));
-    int xmax = ::wxGetDisplaySize().x - GetSize().x;
-    x = wxMin(x, xmax);
-    int ymax =
-        ::wxGetDisplaySize().y - (GetSize().y * 2);  // Some fluff at the bottom
-    y = wxMin(y, ymax);
-
-    g_Window->Move(x, y);
-  }
-}
-#endif
 
 void Dlg::OnClock(wxTimerEvent& event) {
   Notify2();
@@ -214,10 +202,8 @@ void Dlg::UpdateClock() {
     } else
       b_watchHour = false;
 
-    m_sound = new wxSound(g_anchorwatch_sound_file);
-    if (b_watchHour) {
-      m_sound->Play(wxSOUND_ASYNC);
-    }
+      PlugInPlaySound(g_anchorwatch_sound_file);
+    
   }
 
   wxString s = dt.Format(_T("%H:%M:%S"));
@@ -251,7 +237,7 @@ void Dlg::Notify() {
   }
 
   if (play_sound) {
-    m_sound->Play(wxSOUND_ASYNC);
+    PlugInPlaySound(g_anchorwatch_sound_file);
   }
   //      wxMessageBox(interv);
 }
@@ -284,7 +270,7 @@ void Dlg::Notify3() {
   }
 
   if (play_sound) {
-    m_sound->Play(wxSOUND_ASYNC);
+    PlugInPlaySound(g_anchorwatch_sound_file);
   }
   //      wxMessageBox(interv);
 }
@@ -316,7 +302,7 @@ void Dlg::Notify4() {
     }
 
     if (play_sound) {
-      m_sound->Play(wxSOUND_ASYNC);
+      PlugInPlaySound(g_anchorwatch_sound_file);
     }
     //      wxMessageBox(interv);
   }
