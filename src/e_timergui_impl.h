@@ -77,15 +77,12 @@ private:
     void Notify2();
     void Notify3();
     void Notify4();
-    bool error_found;
     bool dbg;
     int g_tick;
     wxString g_anchorwatch_sound_file;
 
-    wxSound* m_sound;
     wxString m_soundFile;
     bool play_sound;
-    bool made_sound;
     wxDateTime m_dtNow;
     void UpdateClock();
     void FillCountdown();
