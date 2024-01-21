@@ -36,6 +36,7 @@
 #include "e_timergui.h"
 #include "wx/sound.h"
 #include "wx/window.h"
+#include "ocpn_plugin.h"
 
 #include <list>
 #include <vector>
