@@ -233,9 +233,7 @@ void Dlg::OnStopTimer(wxCommandEvent& event) {
 
   play_sound = false;
 
-  wxSound::Stop();
   g_tick = 0;
-  wxSound* const sound = NULL;
   m_timer1.Stop();
   m_timer3.Stop();
   m_textTime->SetValue("   00:00");
