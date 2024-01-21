@@ -69,7 +69,7 @@
           <property name="proportion">0</property>
           <object class="wxStaticBoxSizer" expanded="true">
             <property name="id">wxID_ANY</property>
-            <property name="label">e_timer</property>
+            <property name="label">    e_timer</property>
             <property name="minimum_size"></property>
             <property name="name">sbSizer1</property>
             <property name="orient">wxVERTICAL</property>

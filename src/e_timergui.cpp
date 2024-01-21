@@ -17,7 +17,7 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	bSizerMain = new wxBoxSizer( wxVERTICAL );
 
 	wxStaticBoxSizer* sbSizer1;
-	sbSizer1 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("e_timer") ), wxVERTICAL );
+	sbSizer1 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("    e_timer") ), wxVERTICAL );
 
 
 	bSizerMain->Add( sbSizer1, 0, wxEXPAND, 5 );

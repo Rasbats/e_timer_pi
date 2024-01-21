@@ -37,6 +37,7 @@
 #include "wx/sound.h"
 #include "wx/window.h"
 #include "ocpn_plugin.h"
+#include <wx/menu.h>
 
 #include <list>
 #include <vector>
