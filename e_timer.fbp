@@ -58,6 +58,7 @@
       <property name="window_name"></property>
       <property name="window_style"></property>
       <event name="OnClose">OnClose</event>
+      <event name="OnLeftDClick">OnDLeftClick</event>
       <object class="wxBoxSizer" expanded="true">
         <property name="minimum_size"></property>
         <property name="name">bSizerMain</property>
@@ -1687,7 +1688,7 @@
           <property name="border">5</property>
           <property name="flag">wxALIGN_CENTER_HORIZONTAL|wxEXPAND</property>
           <property name="proportion">0</property>
-          <object class="wxBoxSizer" expanded="false">
+          <object class="wxBoxSizer" expanded="true">
             <property name="minimum_size"></property>
             <property name="name">bSizer14</property>
             <property name="orient">wxHORIZONTAL</property>
@@ -1762,7 +1763,7 @@
         <object class="sizeritem" expanded="true">
           <property name="border">5</property>
           <property name="flag">wxEXPAND</property>
-          <property name="proportion">1</property>
+          <property name="proportion">0</property>
           <object class="wxBoxSizer" expanded="true">
             <property name="minimum_size"></property>
             <property name="name">bSizer71</property>

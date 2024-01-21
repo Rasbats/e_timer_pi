@@ -177,7 +177,7 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	bSizer71->Add( m_button31111, 0, wxALL|wxEXPAND, 5 );
 
 
-	bSizerMain->Add( bSizer71, 1, wxEXPAND, 5 );
+	bSizerMain->Add( bSizer71, 0, wxEXPAND, 5 );
 
 	m_staticline62 = new wxStaticLine( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
 	bSizerMain->Add( m_staticline62, 0, wxEXPAND | wxALL, 5 );
@@ -195,6 +195,7 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	// Connect Events
 	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( m_Dialog::OnClose ) );
+	this->Connect( wxEVT_LEFT_DCLICK, wxMouseEventHandler( m_Dialog::OnDLeftClick ) );
 	m_checkBoxDuration->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnDuration ), NULL, this );
 	m_checkBoxCountdown->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnCountdown ), NULL, this );
 	m_checkBoxRepeat->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnRepeat ), NULL, this );
@@ -211,6 +212,7 @@ m_Dialog::~m_Dialog()
 {
 	// Disconnect Events
 	this->Disconnect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( m_Dialog::OnClose ) );
+	this->Disconnect( wxEVT_LEFT_DCLICK, wxMouseEventHandler( m_Dialog::OnDLeftClick ) );
 	m_checkBoxDuration->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnDuration ), NULL, this );
 	m_checkBoxCountdown->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnCountdown ), NULL, this );
 	m_checkBoxRepeat->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnRepeat ), NULL, this );

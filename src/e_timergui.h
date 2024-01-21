@@ -72,6 +72,7 @@ class m_Dialog : public wxDialog
 
 		// Virtual event handlers, override them in your derived class
 		virtual void OnClose( wxCloseEvent& event ) { event.Skip(); }
+		virtual void OnDLeftClick( wxMouseEvent& event ) { event.Skip(); }
 		virtual void OnDuration( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnCountdown( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnRepeat( wxCommandEvent& event ) { event.Skip(); }
