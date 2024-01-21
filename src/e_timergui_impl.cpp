@@ -59,6 +59,19 @@ Dlg::Dlg(wxWindow* parent, e_timer_pi* ppi) : m_Dialog(parent) {
   pPlugIn = ppi;
   pParent = parent;
 
+  #ifdef __ANDROID__
+
+  m_binResize = false;
+
+  g_Window = this;
+  GetHandle()->setStyleSheet(qtStyleSheet);
+  Connect(wxEVT_LEFT_DOWN, wxMouseEventHandler(Dlg::OnMouseEvent));
+  Connect(wxEVT_LEFT_UP, wxMouseEventHandler(Dlg::OnMouseEvent));
+
+  Connect(wxEVT_MOTION, wxMouseEventHandler(Dlg::OnMouseEvent));
+#endif
+
+
   wxString s = "/";
   const char* pName = "e_timer_pi";
   wxString sound_dir = GetPluginDataDir(pName) + s + "data" + s;
@@ -90,16 +103,11 @@ Dlg::Dlg(wxWindow* parent, e_timer_pi* ppi) : m_Dialog(parent) {
 
   m_timer2.Start(1000, wxTIMER_CONTINUOUS);
   m_textTime->SetValue("   00:00");
-
-#ifdef __ANDROID__
-  g_Window = this;
-  GetHandle()->setStyleSheet(qtStyleSheet);
-  Connect(wxEVT_LEFT_DOWN, wxMouseEventHandler(Dlg::OnMouseEvent));
-  Connect(wxEVT_LEFT_UP, wxMouseEventHandler(Dlg::OnMouseEvent));
-
-  Connect(wxEVT_MOTION, wxMouseEventHandler(Dlg::OnMouseEvent));
-#endif
 }
+
+Dlg::~Dlg() {}
+
+
 
 #ifdef __ANDROID__
 wxPoint g_startPos;
@@ -201,7 +209,7 @@ void Dlg::OnMouseEvent(wxMouseEvent& event) {
 }
 
 #endif  // End of Android functions for move/resize
-Dlg::~Dlg() {}
+
 
 void Dlg::OnClock(wxTimerEvent& event) {
   Notify2();
