@@ -40,8 +40,8 @@
 #include <list>
 #include <vector>
 
-#define OCPN_SOUND_CMD                                                         \
-    "PowerShell (New-Object Media.SoundPlayer \\\"%s\\\").PlaySync();"
+#define ID_SOMETHING 2001
+#define ID_SOMETHING_ELSE 2002
 
 using namespace std;
 
@@ -57,9 +57,18 @@ public:
     wxWindow* pParent;
     e_timer_pi* pPlugIn;
 
-#ifdef __OCPN__ANDROID__
+#ifdef __ANDROID__
     void OnMouseEvent(wxMouseEvent& event);
+    wxPoint m_resizeStartPoint;
+    wxSize m_resizeStartSize;
+    bool m_binResize;
+    bool m_binResize2;
+
+    void OnPopupClick(wxCommandEvent& evt);
+    void OnDLeftClick(wxMouseEvent& event);
+
 #endif
+
     void OnStartTimer(wxCommandEvent& event);
     void OnStopTimer(wxCommandEvent& event);
     void OnTimer(wxTimerEvent& event);
