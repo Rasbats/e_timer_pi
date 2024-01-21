@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version 3.10.1-0-g8feb16b3)
+// C++ code generated with wxFormBuilder (version 4.0.0-0-g0efcecf)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO *NOT* EDIT THIS FILE!
@@ -16,13 +16,11 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizerMain = new wxBoxSizer( wxVERTICAL );
 
-	bSizer8 = new wxBoxSizer( wxVERTICAL );
-
-	m_staticline5 = new wxStaticLine( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
-	bSizer8->Add( m_staticline5, 0, wxEXPAND | wxALL, 5 );
+	wxStaticBoxSizer* sbSizer1;
+	sbSizer1 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("e_timer") ), wxVERTICAL );
 
 
-	bSizerMain->Add( bSizer8, 0, wxEXPAND, 5 );
+	bSizerMain->Add( sbSizer1, 0, wxEXPAND, 5 );
 
 	m_ClockTime = new wxTextCtrl( this, wxID_ANY, wxT("12:00:00"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_ClockTime->SetFont( wxFont( 14, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
@@ -191,10 +189,10 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	this->SetSizer( bSizerMain );
 	this->Layout();
 	bSizerMain->Fit( this );
-	m_timer4.SetOwner( this, ID_TIMER_4 );
-	m_timer2.SetOwner( this, ID_TIMER_2 );
-	m_timer3.SetOwner( this, ID_TIMER_3 );
-	m_timer1.SetOwner( this, ID_TIMER_1 );
+	m_timer4.SetOwner( this, m_timer4.GetId() );
+	m_timer2.SetOwner( this, m_timer2.GetId() );
+	m_timer3.SetOwner( this, m_timer3.GetId() );
+	m_timer1.SetOwner( this, m_timer1.GetId() );
 
 	this->Centre( wxBOTH );
 
@@ -206,10 +204,10 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_checkBoxWatch->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnWatch ), NULL, this );
 	m_button3111->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( m_Dialog::OnStartTimer ), NULL, this );
 	m_button31111->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( m_Dialog::OnStopTimer ), NULL, this );
-	this->Connect( ID_TIMER_4, wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer4 ) );
-	this->Connect( ID_TIMER_2, wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnClock ) );
-	this->Connect( ID_TIMER_3, wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer3 ) );
-	this->Connect( ID_TIMER_1, wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer ) );
+	this->Connect( m_timer4.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer4 ) );
+	this->Connect( m_timer2.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnClock ) );
+	this->Connect( m_timer3.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer3 ) );
+	this->Connect( m_timer1.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer ) );
 }
 
 m_Dialog::~m_Dialog()
@@ -222,9 +220,9 @@ m_Dialog::~m_Dialog()
 	m_checkBoxWatch->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnWatch ), NULL, this );
 	m_button3111->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( m_Dialog::OnStartTimer ), NULL, this );
 	m_button31111->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( m_Dialog::OnStopTimer ), NULL, this );
-	this->Disconnect( ID_TIMER_4, wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer4 ) );
-	this->Disconnect( ID_TIMER_2, wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnClock ) );
-	this->Disconnect( ID_TIMER_3, wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer3 ) );
-	this->Disconnect( ID_TIMER_1, wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer ) );
+	this->Disconnect( m_timer4.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer4 ) );
+	this->Disconnect( m_timer2.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnClock ) );
+	this->Disconnect( m_timer3.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer3 ) );
+	this->Disconnect( m_timer1.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer ) );
 
 }

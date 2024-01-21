@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version 3.10.1-0-g8feb16b3)
+// C++ code generated with wxFormBuilder (version 4.0.0-0-g0efcecf)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO *NOT* EDIT THIS FILE!
@@ -9,14 +9,15 @@
 
 #include <wx/artprov.h>
 #include <wx/xrc/xmlres.h>
-#include <wx/statline.h>
+#include <wx/string.h>
+#include <wx/sizer.h>
+#include <wx/statbox.h>
 #include <wx/gdicmn.h>
+#include <wx/textctrl.h>
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
-#include <wx/string.h>
-#include <wx/sizer.h>
-#include <wx/textctrl.h>
+#include <wx/statline.h>
 #include <wx/stattext.h>
 #include <wx/checkbox.h>
 #include <wx/choice.h>
@@ -42,7 +43,6 @@ class m_Dialog : public wxDialog
 	private:
 
 	protected:
-		wxStaticLine* m_staticline5;
 		wxStaticLine* m_staticline2;
 		wxStaticText* m_staticText71;
 		wxCheckBox* m_checkBoxDuration;
@@ -86,7 +86,6 @@ class m_Dialog : public wxDialog
 
 	public:
 		wxBoxSizer* bSizerMain;
-		wxBoxSizer* bSizer8;
 		wxTextCtrl* m_ClockTime;
 		wxChoice* m_duration;
 		wxBoxSizer* bSizerCountdown;
