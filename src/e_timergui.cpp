@@ -16,12 +16,6 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 	bSizerMain = new wxBoxSizer( wxVERTICAL );
 
-	wxStaticBoxSizer* sbSizer1;
-	sbSizer1 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, wxT("    e_timer") ), wxVERTICAL );
-
-
-	bSizerMain->Add( sbSizer1, 0, wxEXPAND, 5 );
-
 	m_ClockTime = new wxTextCtrl( this, wxID_ANY, wxT("12:00:00"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_ClockTime->SetFont( wxFont( 14, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
 	m_ClockTime->SetBackgroundColour( wxSystemSettings::GetColour( wxSYS_COLOUR_3DLIGHT ) );
@@ -184,6 +178,9 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 
 
 	bSizerMain->Add( bSizer71, 1, wxEXPAND, 5 );
+
+	m_staticline62 = new wxStaticLine( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
+	bSizerMain->Add( m_staticline62, 0, wxEXPAND | wxALL, 5 );
 
 
 	this->SetSizer( bSizerMain );
