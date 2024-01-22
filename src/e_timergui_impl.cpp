@@ -59,7 +59,7 @@ Dlg::Dlg(wxWindow* parent, e_timer_pi* ppi) : m_Dialog(parent) {
   pPlugIn = ppi;
   pParent = parent;
 
-  #ifdef __ANDROID__
+#ifdef __ANDROID__
 
   m_binResize = false;
 
@@ -71,7 +71,6 @@ Dlg::Dlg(wxWindow* parent, e_timer_pi* ppi) : m_Dialog(parent) {
   Connect(wxEVT_MOTION, wxMouseEventHandler(Dlg::OnMouseEvent));
 #endif
 
-
   wxString s = "/";
   const char* pName = "e_timer_pi";
   wxString sound_dir = GetPluginDataDir(pName) + s + "data" + s;
@@ -79,7 +78,7 @@ Dlg::Dlg(wxWindow* parent, e_timer_pi* ppi) : m_Dialog(parent) {
   // Set reasonable defaults
   sound_dir.Append(_T("sounds"));
   sound_dir.Append(wxFileName::GetPathSeparator());
-  g_anchorwatch_sound_file = sound_dir + _T("beep1.wav");
+  g_anchorwatch_sound_file = sound_dir + _T("short-alarm.wav");
   g_tick = 0;
 
   // Hide choices not selected
@@ -106,8 +105,6 @@ Dlg::Dlg(wxWindow* parent, e_timer_pi* ppi) : m_Dialog(parent) {
 }
 
 Dlg::~Dlg() {}
-
-
 
 #ifdef __ANDROID__
 wxPoint g_startPos;
@@ -210,14 +207,12 @@ void Dlg::OnMouseEvent(wxMouseEvent& event) {
 
 #endif  // End of Android functions for move/resize
 
-
 void Dlg::OnClock(wxTimerEvent& event) {
   Notify2();
   event.Skip();
 }
 
 void Dlg::OnStartTimer(wxCommandEvent& event) {
-
   play_sound = false;
 
   g_tick = 0;
@@ -241,10 +236,11 @@ void Dlg::OnStopTimer(wxCommandEvent& event) {
 
   play_sound = false;
 
-  g_tick = 0;
   m_timer1.Stop();
   m_timer3.Stop();
+
   m_textTime->SetValue("   00:00");
+  g_tick = 0;
 
   if (m_checkBoxCountdown->IsChecked()) {
     m_checkBoxCountdown->SetValue(false);
@@ -252,18 +248,19 @@ void Dlg::OnStopTimer(wxCommandEvent& event) {
     m_staticTextCD->Hide();
     m_staticTextCD2->Hide();
     m_choiceCD->Hide();
+
   } else if (m_checkBoxDuration->IsChecked()) {
     m_checkBoxDuration->SetValue(false);
     m_staticTextDuration->Hide();
     m_duration->Hide();
     m_staticTextDuration2->Hide();
+
   } else if (!m_checkBoxRepeat->IsChecked()) {
     m_checkBoxRepeat->SetValue(false);
     m_staticTextRepeat->Hide();
     m_choiceRepeat->Hide();
     m_staticTextRepeat2->Hide();
     m_timer4.Stop();
-    m_textTime->SetValue("   00:00");
   }
   if (m_checkBoxWatch->IsChecked()) {
     b_watchHour = false;
@@ -299,8 +296,7 @@ void Dlg::UpdateClock() {
     } else
       b_watchHour = false;
 
-      PlugInPlaySound(g_anchorwatch_sound_file);
-    
+    PlugInPlaySound(g_anchorwatch_sound_file);
   }
 
   wxString s = dt.Format(_T("%H:%M:%S"));
@@ -326,7 +322,7 @@ void Dlg::Notify() {
   wxString s_interval = this->m_duration->GetString(i_interval);
   int myInterval = wxAtoi(s_interval) * 60;
 
-  if (g_tick == myInterval) {
+  if (g_tick >= myInterval) {
     // wxMessageBox("sound");
     play_sound = true;
     g_tick = 0;
@@ -391,7 +387,7 @@ void Dlg::Notify4() {
     int i_interval = this->m_choiceRepeat->GetSelection();
     wxString s_interval = this->m_choiceRepeat->GetString(i_interval);
     int myInterval = wxAtoi(s_interval) * 60;
-    if (g_tick == myInterval) {
+    if (g_tick >= myInterval) {
       // wxMessageBox("sound");
       play_sound = true;
       g_tick = 0;
@@ -417,7 +413,7 @@ void Dlg::OnDuration(wxCommandEvent& event) {
     m_timer1.Stop();
     m_timer3.Stop();
 
-      // Hide choices not selected
+    // Hide choices not selected
     m_staticTextCD->Hide();
     m_staticTextCD2->Hide();
     m_choiceCD->Hide();
@@ -452,7 +448,7 @@ void Dlg::OnCountdown(wxCommandEvent& event) {
     m_timer1.Stop();
     m_timer3.Stop();
 
-      // Hide choices not selected
+    // Hide choices not selected
     m_staticTextDuration->Hide();
     m_duration->Hide();
     m_staticTextDuration2->Hide();
