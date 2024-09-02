@@ -263,7 +263,7 @@ void Dlg::OnStopTimer(wxCommandEvent& event) {
     m_staticTextRepeat2->Hide();
     m_timer4.Stop();
   } else if (m_checkBoxRepeat->IsChecked()) {
-    wxMilliSleep(1200);
+    wxMilliSleep(3000);
     m_timer4.Start();
   }
   if (m_checkBoxWatch->IsChecked()) {

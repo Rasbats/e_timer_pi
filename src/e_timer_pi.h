@@ -52,7 +52,7 @@
 
 class Dlg;
 
-class e_timer_pi : public opencpn_plugin_116
+class e_timer_pi : public opencpn_plugin_118
 {
 public:
       e_timer_pi(void *ppimgr);
