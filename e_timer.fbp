@@ -1705,7 +1705,7 @@
           <object class="wxBoxSizer" expanded="true">
             <property name="minimum_size"></property>
             <property name="name">bSizer14</property>
-            <property name="orient">wxHORIZONTAL</property>
+            <property name="orient">wxVERTICAL</property>
             <property name="permission">none</property>
             <object class="sizeritem" expanded="false">
               <property name="border">5</property>

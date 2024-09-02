@@ -238,6 +238,7 @@ void Dlg::OnStopTimer(wxCommandEvent& event) {
 
   m_timer1.Stop();
   m_timer3.Stop();
+  m_timer4.Stop();
 
   m_textTime->SetValue("   00:00");
   g_tick = 0;
@@ -261,6 +262,9 @@ void Dlg::OnStopTimer(wxCommandEvent& event) {
     m_choiceRepeat->Hide();
     m_staticTextRepeat2->Hide();
     m_timer4.Stop();
+  } else if (m_checkBoxRepeat->IsChecked()) {
+    wxMilliSleep(1200);
+    m_timer4.Start();
   }
   if (m_checkBoxWatch->IsChecked()) {
     b_watchHour = false;
