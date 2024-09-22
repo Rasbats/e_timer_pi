@@ -32,7 +32,7 @@ set(OCPN_RELEASE_REPO
 # -------  Plugin setup --------
 #
 set(PKG_NAME e_timer_pi)
-set(PKG_VERSION  0.2.0)
+set(PKG_VERSION  0.3.0)
 set(PKG_PRERELEASE "")  # Empty, or a tag like 'beta'
 
 set(DISPLAY_NAME e_timer)    # Dialogs, installer artifacts, ...
