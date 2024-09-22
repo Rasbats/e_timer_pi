@@ -48,33 +48,29 @@
 using namespace std;
 
 class e_timer_pi;
-class Position;
-class mySound;
+class wxSound;
 
 class Dlg : public m_Dialog {
 public:
-    Dlg(wxWindow* parent, e_timer_pi* ppi);
-    ~Dlg();
+  Dlg(wxWindow* parent, e_timer_pi* ppi);
+  ~Dlg();
 
-    wxWindow* pParent;
-    e_timer_pi* pPlugIn;
+  wxWindow* pParent;
+  e_timer_pi* pPlugIn;
 
 #ifdef __ANDROID__
-    void OnMouseEvent(wxMouseEvent& event);
-    wxPoint m_resizeStartPoint;
-    wxSize m_resizeStartSize;
-    bool m_binResize;
-    bool m_binResize2;
+  void OnMouseEvent(wxMouseEvent& event);
+  wxPoint m_resizeStartPoint;
+  wxSize m_resizeStartSize;
+  bool m_binResize;
+  bool m_binResize2;
 
-    void OnPopupClick(wxCommandEvent& evt);
-    void OnDLeftClick(wxMouseEvent& event);
+  void OnPopupClick(wxCommandEvent& evt);
+  void OnDLeftClick(wxMouseEvent& event);
 
 #endif
 
-    
-
 private:
-
   void OnStartTimer(wxCommandEvent& event);
   void OnStopTimer(wxCommandEvent& event);
   void OnTimer(wxTimerEvent& event);
@@ -83,21 +79,21 @@ private:
   void OnDuration(wxCommandEvent& event);
   void OnCountdown(wxCommandEvent& event);
   void OnRepeat(wxCommandEvent& event);
-    void OnClose(wxCloseEvent& event);
-    void Notify();
-    void Notify2();
-    void Notify3();
-    void Notify4();
-    void OnClock(wxTimerEvent& event);
-    void UpdateClock(); 
-    bool dbg;
-    int g_tick;
-    wxString g_anchorwatch_sound_file;
-    wxSound m_sound;
-    wxString m_soundFile;
-    bool play_sound;
-    wxDateTime m_dtNow;
-    void FillCountdown();
+  void OnClose(wxCloseEvent& event);
+  void Notify();
+  void Notify2();
+  void Notify3();
+  void Notify4();
+  void OnClock(wxTimerEvent& event);
+  void UpdateClock();
+  bool dbg;
+  int g_tick;
+  wxString g_anchorwatch_sound_file;
+  wxSound m_sound;
+  wxString m_soundFile;
+  bool play_sound;
+  wxDateTime m_dtNow;
+  void FillCountdown();
 };
 
 #endif
