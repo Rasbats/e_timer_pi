@@ -65,21 +65,6 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_checkBoxRepeat = new wxCheckBox( this, wxID_ANY, wxT("Repeat"), wxDefaultPosition, wxDefaultSize, 0 );
 	fgSizer1->Add( m_checkBoxRepeat, 0, wxALL|wxEXPAND, 5 );
 
-	m_staticText17 = new wxStaticText( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText17->Wrap( -1 );
-	fgSizer1->Add( m_staticText17, 0, wxALL|wxEXPAND, 5 );
-
-	m_staticText18 = new wxStaticText( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText18->Wrap( -1 );
-	fgSizer1->Add( m_staticText18, 0, wxALL|wxEXPAND, 5 );
-
-	m_checkBoxWatch = new wxCheckBox( this, wxID_ANY, wxT("Watch Hour"), wxDefaultPosition, wxDefaultSize, 0 );
-	fgSizer1->Add( m_checkBoxWatch, 0, wxALL|wxEXPAND, 5 );
-
-	m_staticText12 = new wxStaticText( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText12->Wrap( -1 );
-	fgSizer1->Add( m_staticText12, 0, wxALL|wxEXPAND, 5 );
-
 
 	bSizerMain->Add( fgSizer1, 0, wxEXPAND, 5 );
 
@@ -205,7 +190,6 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_checkBoxDuration->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnDuration ), NULL, this );
 	m_checkBoxCountdown->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnCountdown ), NULL, this );
 	m_checkBoxRepeat->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnRepeat ), NULL, this );
-	m_checkBoxWatch->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnWatch ), NULL, this );
 	m_button3111->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( m_Dialog::OnStartTimer ), NULL, this );
 	m_button31111->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( m_Dialog::OnStopTimer ), NULL, this );
 	this->Connect( m_timer4.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer4 ) );
@@ -222,7 +206,6 @@ m_Dialog::~m_Dialog()
 	m_checkBoxDuration->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnDuration ), NULL, this );
 	m_checkBoxCountdown->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnCountdown ), NULL, this );
 	m_checkBoxRepeat->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnRepeat ), NULL, this );
-	m_checkBoxWatch->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnWatch ), NULL, this );
 	m_button3111->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( m_Dialog::OnStartTimer ), NULL, this );
 	m_button31111->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( m_Dialog::OnStopTimer ), NULL, this );
 	this->Disconnect( m_timer4.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer4 ) );

@@ -78,9 +78,12 @@ Dlg::Dlg(wxWindow* parent, e_timer_pi* ppi) : m_Dialog(parent) {
   // Set reasonable defaults
   sound_dir.Append(_T("sounds"));
   sound_dir.Append(wxFileName::GetPathSeparator());
-  g_anchorwatch_sound_file = sound_dir + _T("short-alarm.wav");
-  g_tick = 0;
 
+  //create sound file
+  m_soundFile = sound_dir + "short-alarm.wav";
+  m_sound.Create(m_soundFile);
+
+  g_tick = 0;
   // Hide choices not selected
   m_staticTextCD->Hide();
   m_staticTextCD2->Hide();
@@ -97,8 +100,6 @@ Dlg::Dlg(wxWindow* parent, e_timer_pi* ppi) : m_Dialog(parent) {
   m_checkBoxDuration->SetValue(false);
   m_checkBoxCountdown->SetValue(false);
   m_checkBoxRepeat->SetValue(false);
-
-  b_watchHour = false;
 
   m_timer2.Start(1000, wxTIMER_CONTINUOUS);
   m_textTime->SetValue("   00:00");
@@ -214,7 +215,7 @@ void Dlg::OnClock(wxTimerEvent& event) {
 
 void Dlg::OnStartTimer(wxCommandEvent& event) {
   play_sound = false;
-
+ 
   g_tick = 0;
   if (m_checkBoxDuration->IsChecked()) {
     m_timer1.Start(1000, wxTIMER_CONTINUOUS);
@@ -233,12 +234,10 @@ void Dlg::OnStartTimer(wxCommandEvent& event) {
 }
 
 void Dlg::OnStopTimer(wxCommandEvent& event) {
-
   play_sound = false;
 
   m_timer1.Stop();
   m_timer3.Stop();
-  m_timer4.Stop();
 
   m_textTime->SetValue("   00:00");
   g_tick = 0;
@@ -263,11 +262,13 @@ void Dlg::OnStopTimer(wxCommandEvent& event) {
     m_staticTextRepeat2->Hide();
     m_timer4.Stop();
   } else if (m_checkBoxRepeat->IsChecked()) {
-    wxMilliSleep(3000);
-    m_timer4.Start();
-  }
-  if (m_checkBoxWatch->IsChecked()) {
-    b_watchHour = false;
+    m_timer4.Stop();
+    play_sound = false;
+    m_textTime->SetValue("   00:00");
+    g_tick = 0;
+    wxMilliSleep(1000);
+
+    m_timer4.Start(1000, wxTIMER_CONTINUOUS);
   }
 }
 
@@ -284,27 +285,6 @@ void Dlg::OnTimer3(wxTimerEvent& event) {
 void Dlg::OnTimer4(wxTimerEvent& event) {
   g_tick++;
   Notify4();
-}
-
-void Dlg::UpdateClock() {
-  wxDateTime dt = wxDateTime::Now();
-  int myHour = dt.GetHour();
-  int myMinute = dt.GetMinute();
-  int mySeconds = dt.GetSecond();
-  if (m_checkBoxWatch->IsChecked()) {
-    if (myHour == 0 || myHour == 4 || myHour == 8 || myHour == 12 ||
-        myHour == 16 || myHour == 20) {
-      if (myMinute == 0 && mySeconds == 0) {
-        b_watchHour = true;
-      }
-    } else
-      b_watchHour = false;
-
-    PlugInPlaySound(g_anchorwatch_sound_file);
-  }
-
-  wxString s = dt.Format(_T("%H:%M:%S"));
-  m_ClockTime->SetLabel(s);
 }
 
 void Dlg::Notify() {
@@ -334,12 +314,18 @@ void Dlg::Notify() {
   }
 
   if (play_sound) {
-    PlugInPlaySound(g_anchorwatch_sound_file);
+    m_sound.Play(wxSOUND_ASYNC);
   }
   //      wxMessageBox(interv);
 }
 
 void Dlg::Notify2() { UpdateClock(); }
+
+void Dlg::UpdateClock() {
+  wxDateTime dt = wxDateTime::Now();
+  wxString s = dt.Format(_T("%H:%M:%S"));
+  m_ClockTime->SetLabel(s);
+}
 
 void Dlg::Notify3() {
   int totalSeconds = g_tick;
@@ -367,7 +353,7 @@ void Dlg::Notify3() {
   }
 
   if (play_sound) {
-    PlugInPlaySound(g_anchorwatch_sound_file);
+    m_sound.Play(wxSOUND_ASYNC);
   }
   //      wxMessageBox(interv);
 }
@@ -391,7 +377,7 @@ void Dlg::Notify4() {
     int i_interval = this->m_choiceRepeat->GetSelection();
     wxString s_interval = this->m_choiceRepeat->GetString(i_interval);
     int myInterval = wxAtoi(s_interval) * 60;
-    if (g_tick >= myInterval) {
+    if (g_tick == myInterval) {
       // wxMessageBox("sound");
       play_sound = true;
       g_tick = 0;
@@ -399,7 +385,7 @@ void Dlg::Notify4() {
     }
 
     if (play_sound) {
-      PlugInPlaySound(g_anchorwatch_sound_file);
+      m_sound.Play(wxSOUND_ASYNC);
     }
     //      wxMessageBox(interv);
   }

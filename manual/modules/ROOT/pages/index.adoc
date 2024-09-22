@@ -26,31 +26,21 @@ e_timer makes this difficult. The alarm used is the same as the anchor alarm fro
 == Standard actions
 
 The plugin appears in the toolbar like this:
-
 image::1.png[]
-
 Pressing the icon opens the main dialog for the plugin:
-
 image::2.png[]
-
 The type of alarm can be selected by using the checkboxes.
 
 == Count Up
-
 image::3.png[]
-
 Set the interval using the drop-down control. Press "Start". The count-up starts and the alarm will sound when the time is reached. Press "Stop" to cancel the alarm.
 
 == Count Down
-
 image::4.png[]
-
 Set the number of minutes using the drop-down control. Press "Start". The count-down starts and the alarm will sound when the set time has elapsed. Press "Stop" to cancel the alarm.
 
 == Repeat
-
 image::5.png[]
-
 Set the interval using the drop-down control. Press "Start". The timer starts and the alarm will sound when the time is reached. Press "Stop" to silence the alarm. Pressing "Start" or "Stop" resets the count to zero and the timer start again, counting up again from zero to the interval that has been selected. 
 
 image::7.png[]
@@ -58,7 +48,5 @@ image::7.png[]
 To cancel the alarm uncheck the repeat checkbox.
 
 == Watch Hour
-
 image::6.png[]
-
 This alarm sounds at the following watch hours: 0400, 0800, 1200, 1600, 2000, 2400. The selection can be made in conjunction with any of the other alarms.

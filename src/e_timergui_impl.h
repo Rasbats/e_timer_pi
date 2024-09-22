@@ -71,31 +71,32 @@ public:
 
 #endif
 
-    void OnStartTimer(wxCommandEvent& event);
-    void OnStopTimer(wxCommandEvent& event);
-    void OnTimer(wxTimerEvent& event);
-    void OnTimer3(wxTimerEvent& event);
-    void OnTimer4(wxTimerEvent& event);
-    void OnClock(wxTimerEvent& event);
-    void OnDuration(wxCommandEvent& event);
-    void OnCountdown(wxCommandEvent& event);
-    void OnRepeat(wxCommandEvent& event);
+    
 
 private:
-    bool b_watchHour;
+
+  void OnStartTimer(wxCommandEvent& event);
+  void OnStopTimer(wxCommandEvent& event);
+  void OnTimer(wxTimerEvent& event);
+  void OnTimer3(wxTimerEvent& event);
+  void OnTimer4(wxTimerEvent& event);
+  void OnDuration(wxCommandEvent& event);
+  void OnCountdown(wxCommandEvent& event);
+  void OnRepeat(wxCommandEvent& event);
     void OnClose(wxCloseEvent& event);
     void Notify();
     void Notify2();
     void Notify3();
     void Notify4();
+    void OnClock(wxTimerEvent& event);
+    void UpdateClock(); 
     bool dbg;
     int g_tick;
     wxString g_anchorwatch_sound_file;
-
+    wxSound m_sound;
     wxString m_soundFile;
     bool play_sound;
     wxDateTime m_dtNow;
-    void UpdateClock();
     void FillCountdown();
 };
 

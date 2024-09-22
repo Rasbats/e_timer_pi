@@ -52,10 +52,6 @@ class m_Dialog : public wxDialog
 		wxStaticText* m_staticText10;
 		wxStaticText* m_staticText11;
 		wxCheckBox* m_checkBoxRepeat;
-		wxStaticText* m_staticText17;
-		wxStaticText* m_staticText18;
-		wxCheckBox* m_checkBoxWatch;
-		wxStaticText* m_staticText12;
 		wxStaticLine* m_staticline6;
 		wxStaticText* m_staticTextDuration;
 		wxStaticText* m_staticTextDuration2;
@@ -77,7 +73,6 @@ class m_Dialog : public wxDialog
 		virtual void OnDuration( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnCountdown( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnRepeat( wxCommandEvent& event ) { event.Skip(); }
-		virtual void OnWatch( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnStartTimer( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnStopTimer( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnTimer4( wxTimerEvent& event ) { event.Skip(); }
