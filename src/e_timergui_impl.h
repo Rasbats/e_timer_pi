@@ -88,7 +88,7 @@ private:
   bool dbg;
   int g_tick;
   wxString g_anchorwatch_sound_file;
-  wxSound* m_sound;
+  wxSound m_sound;
   wxString m_soundFile;
   bool play_sound;
   wxDateTime m_dtNow;
