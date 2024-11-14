@@ -81,7 +81,6 @@ Dlg::Dlg(wxWindow* parent, e_timer_pi* ppi) : m_Dialog(parent) {
 
   //create sound file
   m_soundFile = sound_dir + "short-alarm.wav";
-  m_sound.Create(m_soundFile);
 
   g_tick = 0;
   // Hide choices not selected
@@ -314,7 +313,7 @@ void Dlg::Notify() {
   }
 
   if (play_sound) {
-    m_sound.Play(wxSOUND_ASYNC);
+    PlugInPlaySound(m_soundFile);
   }
   //      wxMessageBox(interv);
 }
@@ -353,7 +352,7 @@ void Dlg::Notify3() {
   }
 
   if (play_sound) {
-    m_sound.Play(wxSOUND_ASYNC);
+    PlugInPlaySound(m_soundFile);
   }
   //      wxMessageBox(interv);
 }
@@ -385,7 +384,7 @@ void Dlg::Notify4() {
     }
 
     if (play_sound) {
-      m_sound.Play(wxSOUND_ASYNC);
+      PlugInPlaySound(m_soundFile);
     }
     //      wxMessageBox(interv);
   }
