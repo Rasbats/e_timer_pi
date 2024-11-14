@@ -34,8 +34,8 @@
 
 #include "e_timer_pi.h"
 #include "e_timergui.h"
-#include <wx/sound.h>
-#include <wx/window.h>
+#include "wx/sound.h"
+#include "wx/window.h"
 #include "ocpn_plugin.h"
 #include <wx/menu.h>
 
