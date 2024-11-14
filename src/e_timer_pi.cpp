@@ -66,7 +66,7 @@ e_timer_pi::e_timer_pi(void *ppimgr) : opencpn_plugin_118(ppimgr) {
 
   tmp_path = GetPluginDataDir("e_timer_pi");
   fn.SetPath(tmp_path);
-  fn.AppendDir(_T("data"));
+  fn.AppendDir("data");
   fn.SetFullName("e_timer_pi_panel_icon.png");
 
   wxString shareLocn = fn.GetFullPath();
@@ -75,7 +75,7 @@ e_timer_pi::e_timer_pi(void *ppimgr) : opencpn_plugin_118(ppimgr) {
   if (panelIcon.IsOk())
     m_panelBitmap = wxBitmap(panelIcon);
   else
-    wxLogMessage(_T("    e_timer_pi panel icon NOT loaded"));
+    wxLogMessage("e_timer_pi panel icon NOT loaded");
   m_bShowTimer = false;
 }
 
@@ -85,7 +85,7 @@ e_timer_pi::~e_timer_pi(void) {
 }
 
 int e_timer_pi::Init(void) {
-  AddLocaleCatalog(_T("opencpn-e_timer_pi"));
+  AddLocaleCatalog("opencpn-e_timer_pi");
 
   // Set some default private member parameters
   m_route_dialog_x = 0;
@@ -107,11 +107,11 @@ int e_timer_pi::Init(void) {
 
 #ifdef ocpnUSE_SVG
     m_leftclick_tool_id = InsertPlugInToolSVG(
-        _T("Timer"), _svg_timer, _svg_timer, _svg_timer_toggled, wxITEM_CHECK,
-        _("Timer"), _T(""), NULL, CALCULATOR_TOOL_POSITION, 0, this);
+        "Timer", _svg_timer, _svg_timer, _svg_timer_toggled, wxITEM_CHECK,
+        "Timer", "", NULL, CALCULATOR_TOOL_POSITION, 0, this);
 #else
     m_leftclick_tool_id = InsertPlugInTool(
-        _T(""), _img_Timer, _img_Timer, wxITEM_CHECK, _("Timer"), _T(""), NULL,
+        "", _img_Timer, _img_Timer, wxITEM_CHECK, "Timer"), "", NULL,
         CALCULATOR_TOOL_POSITION, 0, this);
 #endif
 
@@ -215,11 +215,11 @@ bool e_timer_pi::LoadConfig(void) {
   wxFileConfig *pConf = (wxFileConfig *)m_pconfig;
 
   if (pConf) {
-    pConf->SetPath(_T( "/Settings/e_timer_pi" ));
-    pConf->Read(_T( "ShowTimerIcon" ), &m_bTimerShowIcon, 1);
+    pConf->SetPath("/Settings/e_timer_pi");
+    pConf->Read("ShowTimerIcon", &m_bTimerShowIcon, 1);
 
-    m_route_dialog_x = pConf->Read(_T ( "DialogPosX" ), 20L);
-    m_route_dialog_y = pConf->Read(_T ( "DialogPosY" ), 20L);
+    m_route_dialog_x = pConf->Read("DialogPosX", 20L);
+    m_route_dialog_y = pConf->Read("DialogPosY", 20L);
 
     if ((m_route_dialog_x < 0) || (m_route_dialog_x > m_display_width))
       m_route_dialog_x = 5;
@@ -234,11 +234,11 @@ bool e_timer_pi::SaveConfig(void) {
   wxFileConfig *pConf = (wxFileConfig *)m_pconfig;
 
   if (pConf) {
-    pConf->SetPath(_T ( "/Settings/e_timer_pi" ));
-    pConf->Write(_T ( "ShowTimerIcon" ), m_bTimerShowIcon);
+    pConf->SetPath("/Settings/e_timer_pi");
+    pConf->Write("ShowTimerIcon", m_bTimerShowIcon);
 
-    pConf->Write(_T ( "DialogPosX" ), m_route_dialog_x);
-    pConf->Write(_T ( "DialogPosY" ), m_route_dialog_y);
+    pConf->Write("DialogPosX", m_route_dialog_x);
+    pConf->Write("DialogPosY", m_route_dialog_y);
 
     return true;
   } else

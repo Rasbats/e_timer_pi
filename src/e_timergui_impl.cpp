@@ -76,7 +76,7 @@ Dlg::Dlg(wxWindow* parent, e_timer_pi* ppi) : m_Dialog(parent) {
   wxString sound_dir = GetPluginDataDir(pName) + s + "data" + s;
 
   // Set reasonable defaults
-  sound_dir.Append(_T("sounds"));
+  sound_dir.Append("sounds");
   sound_dir.Append(wxFileName::GetPathSeparator());
 
   //create sound file
@@ -323,7 +323,7 @@ void Dlg::Notify2() { UpdateClock(); }
 
 void Dlg::UpdateClock() {
   wxDateTime dt = wxDateTime::Now();
-  wxString s = dt.Format(_T("%H:%M:%S"));
+  wxString s = dt.Format("%H:%M:%S");
   m_ClockTime->SetLabel(s);
 }
 
