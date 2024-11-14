@@ -48,7 +48,6 @@
 using namespace std;
 
 class e_timer_pi;
-class wxSound;
 
 class Dlg : public m_Dialog {
 public:
