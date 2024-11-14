@@ -81,7 +81,7 @@ Dlg::Dlg(wxWindow* parent, e_timer_pi* ppi) : m_Dialog(parent) {
 
   //create sound file
   m_soundFile = sound_dir + "short-alarm.wav";
-
+  m_empty_soundFile = sound_dir + "empty.wav";
   g_tick = 0;
   // Hide choices not selected
   m_staticTextCD->Hide();
@@ -263,6 +263,7 @@ void Dlg::OnStopTimer(wxCommandEvent& event) {
   } else if (m_checkBoxRepeat->IsChecked()) {
     m_timer4.Stop();
     play_sound = false;
+    PlugInPlaySound(m_empty_soundFile);
     m_textTime->SetValue("   00:00");
     g_tick = 0;
     wxMilliSleep(1000);

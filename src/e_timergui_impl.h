@@ -88,6 +88,7 @@ private:
   int g_tick;
   wxString g_anchorwatch_sound_file;
   wxString m_soundFile;
+  wxString m_empty_soundFile;
   bool play_sound;
   wxDateTime m_dtNow;
   void FillCountdown();
