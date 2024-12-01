@@ -90,6 +90,7 @@ private:
   wxString m_soundFile;
   wxString m_empty_soundFile;
   bool play_sound;
+  bool stop_notify;
   wxDateTime m_dtNow;
   void FillCountdown();
 };
