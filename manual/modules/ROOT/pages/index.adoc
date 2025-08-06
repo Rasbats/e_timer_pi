@@ -25,10 +25,14 @@ e_timer makes this difficult. The alarm used is the same as the anchor alarm fro
 
 == Standard actions
 
-The plugin appears in the toolbar like this:
-image::1.png[]
-Pressing the icon opens the main dialog for the plugin:
-image::2.png[]
+The plugin appears in the toolbar like this.
+
+image:1.png[]
+
+Pressing the icon opens the main dialog for the plugin.
+
+image:2.png[]
+
 The type of alarm can be selected by using the checkboxes.
 
 == Count Up
@@ -46,3 +50,10 @@ Set the interval using the drop-down control. Press "Start". The timer starts an
 image::7.png[]
 
 To cancel the alarm uncheck the repeat checkbox.
+
+== Enhancements or Problems
+
+Please report these by raising an issue in the github repository:
+
+https://github.com/Rasbats/e_timer_pi/issues[https://github.com/Rasbats/e_timer_pi/issues/]
+
