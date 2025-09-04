@@ -37,7 +37,7 @@ set(PKG_PRERELEASE "")  # Empty, or a tag like 'beta'
 
 set(DISPLAY_NAME e_timer)    # Dialogs, installer artifacts, ...
 set(PLUGIN_API_NAME e_timer) # As of GetCommonName() in plugin API
-set(PKG_SUMMARY "Countdonw/Duration Timer")
+set(PKG_SUMMARY "Countdown/Duration Timer")
 set(PKG_DESCRIPTION [=[
 A simple timer.
 ]=])

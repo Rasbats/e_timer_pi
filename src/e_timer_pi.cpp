@@ -169,16 +169,9 @@ const char *GetPlugInVersionBuild() { return PKG_BUILD_INFO; }
 
 wxBitmap *e_timer_pi::GetPlugInBitmap() { return &m_panelBitmap; }
 
-wxString e_timer_pi::GetCommonName() { return _("e_timer"); }
-
-wxString e_timer_pi::GetShortDescription() {
-  return _("Count up/Countdown Timer");
-}
-
-wxString e_timer_pi::GetLongDescription() {
-  return _(
-      "Count up/Countdown Timer");
-}
+wxString e_timer_pi::GetCommonName() { return PLUGIN_API_NAME; }
+wxString e_timer_pi::GetShortDescription() { return PKG_SUMMARY; }
+wxString e_timer_pi::GetLongDescription() { return PKG_DESCRIPTION; }
 
 int e_timer_pi::GetToolbarToolCount(void) { return 1; }
 
