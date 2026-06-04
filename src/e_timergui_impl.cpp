@@ -71,7 +71,7 @@ Dlg::Dlg(wxWindow* parent, e_timer_pi* ppi) : m_Dialog(parent) {
   Connect(wxEVT_MOTION, wxMouseEventHandler(Dlg::OnMouseEvent));
 #endif
 
-  wxString s = "/";
+  wxString s = "\\";
   const char* pName = "e_timer_pi";
   wxString sound_dir = GetPluginDataDir(pName) + s + "data" + s;
 
@@ -84,25 +84,24 @@ Dlg::Dlg(wxWindow* parent, e_timer_pi* ppi) : m_Dialog(parent) {
   m_empty_soundFile = sound_dir + "empty.wav";
   g_tick = 0;
   // Hide choices not selected
-  m_staticTextCD->Hide();
-  m_staticTextCD2->Hide();
-  m_choiceCD->Hide();
+  m_static_text_countdown->Hide();
+  m_static_text_countdown2->Hide();
+  m_choice_countdown->Hide();
 
-  m_staticTextDuration->Hide();
-  m_duration->Hide();
-  m_staticTextDuration2->Hide();
+  m_static_text_countup->Hide();
+  m_choice_countup->Hide();
+  m_static_text_countup2->Hide();
 
-  m_staticTextRepeat->Hide();
-  m_choiceRepeat->Hide();
-  m_staticTextRepeat2->Hide();
+  m_static_text_repeat->Hide();
+  m_choice_repeat->Hide();
+  m_static_text_repeat2->Hide();
 
-  m_checkBoxDuration->SetValue(false);
-  m_checkBoxCountdown->SetValue(false);
-  m_checkBoxRepeat->SetValue(false);
+  m_checkbox_countup->SetValue(false);
+  m_checkbox_countdown->SetValue(false);
+  m_checkbox_repeat->SetValue(false);
 
-  m_timer2.Start(1000, wxTIMER_CONTINUOUS);
-  m_textTime->SetValue("   00:00");
-  stop_notify = false;
+  m_timer_clock.Start(1000, wxTIMER_CONTINUOUS);
+  NotifyClock();
 }
 
 Dlg::~Dlg() {}
@@ -207,120 +206,106 @@ void Dlg::OnMouseEvent(wxMouseEvent& event) {
 }
 
 #endif  // End of Android functions for move/resize
-
+/*
 void Dlg::OnClock(wxTimerEvent& event) {
-  Notify2();
+  NotifyClock();
   event.Skip();
-}
+}*/
 
 void Dlg::OnStartTimer(wxCommandEvent& event) {
-  play_sound = false;
-
   g_tick = 0;
-  if (m_checkBoxDuration->IsChecked()) {
-    m_timer1.Start(1000, wxTIMER_CONTINUOUS);
-    Notify();
-  } else if (m_checkBoxCountdown->IsChecked()) {
-    int c = m_choiceCD->GetSelection();
-    wxString s = m_choiceCD->GetString(c);
+  if (m_checkbox_countup->IsChecked()) {
+    m_timer_countup.Start(1000, wxTIMER_CONTINUOUS);
+    NotifyCountUp();
+  } else if (m_checkbox_countdown->IsChecked()) {
+    int c = m_choice_countdown->GetSelection();
+    wxString s = m_choice_countdown->GetString(c);
     int cs = atoi(s);
     g_tick = cs * 60;
-    m_timer3.Start(1000, wxTIMER_CONTINUOUS);
-    Notify3();
-  } else if (m_checkBoxRepeat->IsChecked()) {
-    m_timer4.Start(1000, wxTIMER_CONTINUOUS);
-    Notify4();
+    m_timer_countdown.Start(1000, wxTIMER_CONTINUOUS);
+    NotifyCountDown();
+  } else if (m_checkbox_repeat->IsChecked()) {
+    m_timer_repeat.Start(1000, wxTIMER_CONTINUOUS);
+    NotifyRepeat();
+  }
+
+  if (!m_checkbox_countup->IsChecked() && !m_checkbox_countdown->IsChecked() && !m_checkbox_repeat->IsChecked()) {
+    // Do something when no checkboxes are checked
+    m_timer_stopwatch.Start(1000, wxTIMER_CONTINUOUS);
+    NotifyStopwatch();
   }
 }
 
 void Dlg::OnStopTimer(wxCommandEvent& event) {
-  play_sound = false;
+  m_timer_countup.Stop();
+  m_timer_countdown.Stop();
+  m_timer_alarm.Stop();
 
-  m_timer1.Stop();
-  m_timer3.Stop();
-  m_timer4.Stop();
-
-  m_textTime->SetValue("   00:00");
+  m_text_time->SetValue("   00:00");
   g_tick = 0;
 
-  if (m_checkBoxCountdown->IsChecked()) {
-    m_checkBoxCountdown->SetValue(false);
+  if (m_checkbox_countdown->IsChecked()) {
+    m_checkbox_countdown->SetValue(false);
     // Hide choices not selected
-    m_staticTextCD->Hide();
-    m_staticTextCD2->Hide();
-    m_choiceCD->Hide();
+    m_static_text_countdown->Hide();
+    m_static_text_countdown2->Hide();
+    m_choice_countdown->Hide();
 
-  } else if (m_checkBoxDuration->IsChecked()) {
-    m_checkBoxDuration->SetValue(false);
-    m_staticTextDuration->Hide();
-    m_duration->Hide();
-    m_staticTextDuration2->Hide();
+  } else if (m_checkbox_countup->IsChecked()) {
+    m_checkbox_countup->SetValue(false);
+    m_static_text_countup->Hide();
+    m_choice_countup->Hide();
+    m_static_text_countup2->Hide();
 
-  } else if (!m_checkBoxRepeat->IsChecked()) {
-    m_checkBoxRepeat->SetValue(false);
-    m_staticTextRepeat->Hide();
-    m_choiceRepeat->Hide();
-    m_staticTextRepeat2->Hide();
-    m_timer4.Stop();
-  } else if (m_checkBoxRepeat->IsChecked()) {
+  } else if (!m_checkbox_repeat->IsChecked()) {
+    m_checkbox_repeat->SetValue(false);
+    m_static_text_repeat->Hide();
+    m_choice_repeat->Hide();
+    m_static_text_repeat2->Hide();
+    m_timer_repeat.Stop();
+
+  } else if (m_checkbox_repeat->IsChecked()) {
     play_sound = false;
-    m_textTime->SetValue("   00:00");
-
+    m_text_time->SetValue("   00:00");
     g_tick = 0;
     wxMilliSleep(1000);
-
-    m_timer4.Start(1000, wxTIMER_CONTINUOUS);
+    m_timer_repeat.Start(1000, wxTIMER_CONTINUOUS);
   }
+
+  if (!m_checkbox_countup->IsChecked() && !m_checkbox_countdown->IsChecked() &&
+      !m_checkbox_repeat->IsChecked()) {
+    // Do something when no checkboxes are checked
+    m_timer_stopwatch.Stop();
+    m_text_time->SetValue("   " +   stopwatch_time);
+  }
+
 }
 
-void Dlg::OnTimer(wxTimerEvent& event) {
+void Dlg::OnTimerClock(wxTimerEvent& event) { NotifyClock(); }
+
+void Dlg::OnTimerStopwatch(wxTimerEvent& event) {
   g_tick++;
-  Notify();
+  NotifyStopwatch();
 }
 
-void Dlg::OnTimer3(wxTimerEvent& event) {
+void Dlg::OnTimerCountUp(wxTimerEvent& event) {
+  g_tick++;
+  NotifyCountUp();
+}
+
+void Dlg::OnTimerCountDown(wxTimerEvent& event) {
   g_tick--;
-  Notify3();
+  NotifyCountDown();
 }
 
-void Dlg::OnTimer4(wxTimerEvent& event) {
+void Dlg::OnTimerRepeat(wxTimerEvent& event) {
   g_tick++;
-  Notify4();
+  NotifyRepeat();
 }
 
-void Dlg::Notify() {
-  int totalSeconds = g_tick;
-  int minutes = totalSeconds / 60;
-  totalSeconds = totalSeconds % 60;
+void Dlg::OnTimerAlarm(wxTimerEvent& event) { NotifyAlarm(); }
 
-  int seconds = totalSeconds;
-
-  stringstream ss;
-  ss << setw(2) << setfill('0') << seconds << endl;
-
-  stringstream mm;
-  mm << setw(2) << setfill('0') << minutes << endl;
-
-  m_textTime->SetValue("   " + mm.str() + ":" + ss.str());
-
-  int i_interval = this->m_duration->GetSelection();
-  wxString s_interval = this->m_duration->GetString(i_interval);
-  int myInterval = wxAtoi(s_interval) * 60;
-
-  if (g_tick >= myInterval) {
-    // wxMessageBox("sound");
-    play_sound = true;
-    g_tick = 0;
-    m_textTime->SetValue("   00:00");
-  }
-
-  if (play_sound) {
-    PlugInPlaySound(m_soundFile);
-  }
-  //      wxMessageBox(interv);
-}
-
-void Dlg::Notify2() { UpdateClock(); }
+void Dlg::NotifyClock() { UpdateClock(); }
 
 void Dlg::UpdateClock() {
   wxDateTime dt = wxDateTime::Now();
@@ -328,7 +313,7 @@ void Dlg::UpdateClock() {
   m_ClockTime->SetLabel(s);
 }
 
-void Dlg::Notify3() {
+void Dlg::NotifyStopwatch() {
   int totalSeconds = g_tick;
   int minutes = totalSeconds / 60;
   totalSeconds = totalSeconds % 60;
@@ -341,26 +326,66 @@ void Dlg::Notify3() {
   stringstream mm;
   mm << setw(2) << setfill('0') << minutes << endl;
 
-  m_textTime->SetValue("   " + mm.str() + ":" + ss.str());
-  /*
-  int i_interval = this->m_choiceCD->GetSelection();
-  wxString s_interval = this->m_choiceCD->GetString(i_interval);
-  int myInterval = wxAtoi(s_interval) * 60;*/
-  if (g_tick <= 0) {
-    // wxMessageBox("sound");
-    play_sound = true;
-    g_tick = 0;
-    m_textTime->SetValue("   00:00");
-  }
+  m_text_time->SetValue("   " + mm.str() + ":" + ss.str());
 
-  if (play_sound) {
-    PlugInPlaySound(m_soundFile);
-  }
-  //      wxMessageBox(interv);
+  stopwatch_time = mm.str() + ":" + ss.str();
+
 }
 
-void Dlg::Notify4() {
-  if (m_checkBoxRepeat->IsChecked()) {
+void Dlg::NotifyCountUp() {
+  int totalSeconds = g_tick;
+  int minutes = totalSeconds / 60;
+  totalSeconds = totalSeconds % 60;
+
+  int seconds = totalSeconds;
+
+  stringstream ss;
+  ss << setw(2) << setfill('0') << seconds << endl;
+
+  stringstream mm;
+  mm << setw(2) << setfill('0') << minutes << endl;
+
+  m_text_time->SetValue("   " + mm.str() + ":" + ss.str());
+
+  int i_interval = this->m_choice_countup->GetSelection();
+  wxString s_interval = this->m_choice_countup->GetString(i_interval);
+  int myInterval = wxAtoi(s_interval) * 60;
+
+  if (g_tick >= myInterval) {
+    m_timer_alarm.Start(1000, wxTIMER_CONTINUOUS);
+    m_text_time->SetValue("   00:00");
+  }
+}
+
+void Dlg::NotifyCountDown() {
+  int totalSeconds = g_tick;
+  int minutes = totalSeconds / 60;
+  totalSeconds = totalSeconds % 60;
+
+  int seconds = totalSeconds;
+
+  stringstream ss;
+  ss << setw(2) << setfill('0') << seconds << endl;
+
+  stringstream mm;
+  mm << setw(2) << setfill('0') << minutes << endl;
+
+  m_text_time->SetValue("   " + mm.str() + ":" + ss.str());
+  /*
+  int i_interval = this->m_choice_countdown->GetSelection();
+  wxString s_interval = this->m_choice_countdown->GetString(i_interval);
+  int myInterval = wxAtoi(s_interval) * 60;*/
+  if (g_tick <= 0) {
+    m_timer_countdown.Stop();
+    m_timer_alarm.Start(1000, wxTIMER_CONTINUOUS);
+    NotifyAlarm();
+    g_tick = 0;
+    m_text_time->SetValue("   00:00");
+  }
+}
+
+void Dlg::NotifyRepeat() {
+  if (m_checkbox_repeat->IsChecked()) {
     int totalSeconds = g_tick;
     int minutes = totalSeconds / 60;
     totalSeconds = totalSeconds % 60;
@@ -373,136 +398,133 @@ void Dlg::Notify4() {
     stringstream mm;
     mm << setw(2) << setfill('0') << minutes << endl;
 
-    m_textTime->SetValue("   " + mm.str() + ":" + ss.str());
+    m_text_time->SetValue("   " + mm.str() + ":" + ss.str());
 
-    int i_interval = this->m_choiceRepeat->GetSelection();
-    wxString s_interval = this->m_choiceRepeat->GetString(i_interval);
+    int i_interval = this->m_choice_repeat->GetSelection();
+    wxString s_interval = this->m_choice_repeat->GetString(i_interval);
     int myInterval = wxAtoi(s_interval) * 60;
     if (g_tick >= myInterval) {
-      play_sound = true;
+      m_timer_alarm.Start(1000, wxTIMER_CONTINUOUS);
       g_tick = 0;
-      m_textTime->SetValue("   00:00");
-    } 
-
-    if (play_sound) {
-      PlugInPlaySound(m_soundFile);      
+      m_text_time->SetValue("   00:00");
     }
   }
 }
 
-void Dlg::OnDuration(wxCommandEvent& event) {
-  if (m_checkBoxDuration->IsChecked()) {
-    m_staticTextDuration->Show();
-    m_duration->Show();
-    m_staticTextDuration2->Show();
+void Dlg::NotifyAlarm() {
+  // wxMessageBox("Timer Alarm", "Timer", wxICON_INFORMATION | wxOK);
+  PlugInPlaySound(m_soundFile);
+}
 
-    m_checkBoxCountdown->SetValue(false);
-    m_checkBoxRepeat->SetValue(false);
-    m_timer4.Stop();
-    m_timer1.Stop();
-    m_timer3.Stop();
+void Dlg::OnCountUp(wxCommandEvent& event) {
+  if (m_checkbox_countup->IsChecked()) {
+    m_static_text_countup->Show();
+    m_choice_countup->Show();
+    m_static_text_countup2->Show();
+
+    m_checkbox_countdown->SetValue(false);
+    m_checkbox_repeat->SetValue(false);
+    m_timer_repeat.Stop();
+    m_timer_countup.Stop();
+    m_timer_countdown.Stop();
 
     // Hide choices not selected
-    m_staticTextCD->Hide();
-    m_staticTextCD2->Hide();
-    m_choiceCD->Hide();
+    m_static_text_countdown->Hide();
+    m_static_text_countdown2->Hide();
+    m_choice_countdown->Hide();
 
-    m_staticTextRepeat->Hide();
-    m_choiceRepeat->Hide();
-    m_staticTextRepeat2->Hide();
+    m_static_text_repeat->Hide();
+    m_choice_repeat->Hide();
+    m_static_text_repeat2->Hide();
 
-    m_textTime->SetValue("   00:00");
+    m_text_time->SetValue("   00:00");
 
   } else {
-    m_staticTextDuration->Hide();
-    m_duration->Hide();
-    m_staticTextDuration2->Hide();
-    m_textTime->SetValue("   00:00");
+    m_static_text_countup->Hide();
+    m_choice_countup->Hide();
+    m_static_text_countup2->Hide();
+    m_text_time->SetValue("   00:00");
   }
   this->SetSizer(bSizerMain);
   this->Layout();
   bSizerMain->Fit(this);
 }
 
-void Dlg::OnCountdown(wxCommandEvent& event) {
-  if (m_checkBoxCountdown->IsChecked()) {
-    m_staticTextCD->Show();
-    m_choiceCD->Show();
-    m_staticTextCD2->Show();
-    FillCountdown();
+void Dlg::OnCountDown(wxCommandEvent& event) {
+  if (m_checkbox_countdown->IsChecked()) {
+    m_static_text_countdown->Show();
+    m_choice_countdown->Show();
+    m_static_text_countdown2->Show();
+    FillCountDown();
 
-    m_checkBoxDuration->SetValue(false);
-    m_checkBoxRepeat->SetValue(false);
-    m_timer4.Stop();
-    m_timer1.Stop();
-    m_timer3.Stop();
+    m_checkbox_countup->SetValue(false);
+    m_checkbox_repeat->SetValue(false);
+    m_timer_repeat.Stop();
+    m_timer_countup.Stop();
+    m_timer_countdown.Stop();
 
     // Hide choices not selected
-    m_staticTextDuration->Hide();
-    m_duration->Hide();
-    m_staticTextDuration2->Hide();
+    m_static_text_countup->Hide();
+    m_choice_countup->Hide();
+    m_static_text_countup2->Hide();
 
-    m_staticTextRepeat->Hide();
-    m_choiceRepeat->Hide();
-    m_staticTextRepeat2->Hide();
+    m_static_text_repeat->Hide();
+    m_choice_repeat->Hide();
+    m_static_text_repeat2->Hide();
 
-    m_textTime->SetValue("   00:00");
+    m_text_time->SetValue("   00:00");
 
   } else {
-    m_staticTextCD->Hide();
-    m_choiceCD->Hide();
-    m_staticTextCD2->Hide();
-    m_textTime->SetValue("   00:00");
+    m_static_text_countdown->Hide();
+    m_choice_countdown->Hide();
+    m_static_text_countdown2->Hide();
+    m_text_time->SetValue("   00:00");
   }
 
   this->SetSizer(bSizerMain);
   this->Layout();
   bSizerMain->Fit(this);
-
-  // wxMessageBox("here");
 }
 
 void Dlg::OnRepeat(wxCommandEvent& event) {
-  if (m_checkBoxRepeat->IsChecked()) {
-    m_staticTextRepeat->Show();
-    m_choiceRepeat->Show();
-    m_staticTextRepeat2->Show();
+  if (m_checkbox_repeat->IsChecked()) {
+    m_static_text_repeat->Show();
+    m_choice_repeat->Show();
+    m_static_text_repeat2->Show();
 
-    m_checkBoxDuration->SetValue(false);
-    m_checkBoxCountdown->SetValue(false);
-    m_timer1.Stop();
-    m_timer3.Stop();
+    m_checkbox_countup->SetValue(false);
+    m_checkbox_countdown->SetValue(false);
+    m_timer_countup.Stop();
+    m_timer_countdown.Stop();
 
     // Hide choices not selected
-    m_staticTextCD->Hide();
-    m_staticTextCD2->Hide();
-    m_choiceCD->Hide();
+    m_static_text_countdown->Hide();
+    m_static_text_countdown2->Hide();
+    m_choice_countdown->Hide();
 
-    m_staticTextDuration->Hide();
-    m_duration->Hide();
-    m_staticTextDuration2->Hide();
+    m_static_text_countup->Hide();
+    m_choice_countup->Hide();
+    m_static_text_countup2->Hide();
 
-    m_textTime->SetValue("   00:00");
+    m_text_time->SetValue("   00:00");
 
   } else {
-    m_staticTextRepeat->Hide();
-    m_choiceRepeat->Hide();
-    m_staticTextRepeat2->Hide();
-    m_textTime->SetValue("   00:00");
-    m_timer4.Stop();
+    m_static_text_repeat->Hide();
+    m_choice_repeat->Hide();
+    m_static_text_repeat2->Hide();
+    m_text_time->SetValue("   00:00");
+    m_timer_repeat.Stop();
   }
 
   this->SetSizer(bSizerMain);
   this->Layout();
   bSizerMain->Fit(this);
-
-  // wxMessageBox("here");
 }
 
-void Dlg::FillCountdown() {
+void Dlg::FillCountDown() {
   for (int i = 1; i <= 60; i++) {
     wxString myInt = wxString::Format("%i", i);
-    m_choiceCD->Append(myInt);
+    m_choice_countdown->Append(myInt);
   }
 }
 

@@ -71,18 +71,23 @@ public:
 private:
   void OnStartTimer(wxCommandEvent& event);
   void OnStopTimer(wxCommandEvent& event);
-  void OnTimer(wxTimerEvent& event);
-  void OnTimer3(wxTimerEvent& event);
-  void OnTimer4(wxTimerEvent& event);
-  void OnDuration(wxCommandEvent& event);
-  void OnCountdown(wxCommandEvent& event);
+  void OnTimerClock(wxTimerEvent& event);
+  void OnTimerStopwatch(wxTimerEvent& event);
+  void OnTimerCountUp(wxTimerEvent& event);
+  void OnTimerCountDown(wxTimerEvent& event);
+  void OnTimerRepeat(wxTimerEvent& event);
+  void OnTimerAlarm(wxTimerEvent& event);
+  void OnCountUp(wxCommandEvent& event);
+  void OnCountDown(wxCommandEvent& event);
   void OnRepeat(wxCommandEvent& event);
   void OnClose(wxCloseEvent& event);
-  void Notify();
-  void Notify2();
-  void Notify3();
-  void Notify4();
-  void OnClock(wxTimerEvent& event);
+  void NotifyClock();
+  void NotifyStopwatch();
+  void NotifyCountUp();
+  void NotifyCountDown();
+  void NotifyRepeat();
+  void NotifyAlarm();
+  //void OnClock(wxTimerEvent& event);
   void UpdateClock();
   bool dbg;
   int g_tick;
@@ -90,9 +95,9 @@ private:
   wxString m_soundFile;
   wxString m_empty_soundFile;
   bool play_sound;
-  bool stop_notify;
   wxDateTime m_dtNow;
-  void FillCountdown();
+  void FillCountDown();
+  wxString stopwatch_time;
 };
 
 #endif

@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version 4.0.0-0-g0efcecf)
+// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO *NOT* EDIT THIS FILE!
@@ -40,8 +40,8 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText71->Wrap( -1 );
 	fgSizer1->Add( m_staticText71, 0, wxALL|wxEXPAND, 5 );
 
-	m_checkBoxDuration = new wxCheckBox( this, wxID_ANY, wxT("Count Up"), wxDefaultPosition, wxDefaultSize, 0 );
-	fgSizer1->Add( m_checkBoxDuration, 0, wxALL|wxEXPAND, 5 );
+	m_checkbox_countup = new wxCheckBox( this, wxID_ANY, wxT("Count Up"), wxDefaultPosition, wxDefaultSize, 0 );
+	fgSizer1->Add( m_checkbox_countup, 0, wxALL|wxEXPAND, 5 );
 
 	m_staticText8 = new wxStaticText( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText8->Wrap( -1 );
@@ -51,8 +51,8 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText9->Wrap( -1 );
 	fgSizer1->Add( m_staticText9, 0, wxALL|wxEXPAND, 5 );
 
-	m_checkBoxCountdown = new wxCheckBox( this, wxID_ANY, wxT("Count Down"), wxDefaultPosition, wxDefaultSize, 0 );
-	fgSizer1->Add( m_checkBoxCountdown, 0, wxALL|wxEXPAND, 5 );
+	m_checkbox_countdown = new wxCheckBox( this, wxID_ANY, wxT("Count Down"), wxDefaultPosition, wxDefaultSize, 0 );
+	fgSizer1->Add( m_checkbox_countdown, 0, wxALL|wxEXPAND, 5 );
 
 	m_staticText10 = new wxStaticText( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText10->Wrap( -1 );
@@ -62,8 +62,8 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	m_staticText11->Wrap( -1 );
 	fgSizer1->Add( m_staticText11, 0, wxALL|wxEXPAND, 5 );
 
-	m_checkBoxRepeat = new wxCheckBox( this, wxID_ANY, wxT("Repeat"), wxDefaultPosition, wxDefaultSize, 0 );
-	fgSizer1->Add( m_checkBoxRepeat, 0, wxALL|wxEXPAND, 5 );
+	m_checkbox_repeat = new wxCheckBox( this, wxID_ANY, wxT("Repeat"), wxDefaultPosition, wxDefaultSize, 0 );
+	fgSizer1->Add( m_checkbox_repeat, 0, wxALL|wxEXPAND, 5 );
 
 
 	bSizerMain->Add( fgSizer1, 0, wxEXPAND, 5 );
@@ -74,42 +74,42 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	wxBoxSizer* bSizer14111111;
 	bSizer14111111 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticTextDuration = new wxStaticText( this, wxID_ANY, wxT("Count \nUp"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticTextDuration->Wrap( -1 );
-	bSizer14111111->Add( m_staticTextDuration, 0, wxALL|wxEXPAND, 5 );
+	m_static_text_countup = new wxStaticText( this, wxID_ANY, wxT("Count \nUp"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_static_text_countup->Wrap( -1 );
+	bSizer14111111->Add( m_static_text_countup, 0, wxALL|wxEXPAND, 5 );
 
-	wxString m_durationChoices[] = { wxT("1"), wxT("10"), wxT("15"), wxT("20"), wxT("30"), wxT("60") };
-	int m_durationNChoices = sizeof( m_durationChoices ) / sizeof( wxString );
-	m_duration = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_durationNChoices, m_durationChoices, 0|wxALWAYS_SHOW_SB );
-	m_duration->SetSelection( 0 );
-	m_duration->SetFont( wxFont( 14, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
+	wxString m_choice_countupChoices[] = { wxT("1"), wxT("10"), wxT("15"), wxT("20"), wxT("30"), wxT("60") };
+	int m_choice_countupNChoices = sizeof( m_choice_countupChoices ) / sizeof( wxString );
+	m_choice_countup = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_countupNChoices, m_choice_countupChoices, 0|wxALWAYS_SHOW_SB );
+	m_choice_countup->SetSelection( 0 );
+	m_choice_countup->SetFont( wxFont( 14, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
 
-	bSizer14111111->Add( m_duration, 1, wxALL|wxEXPAND, 5 );
+	bSizer14111111->Add( m_choice_countup, 1, wxALL|wxEXPAND, 5 );
 
-	m_staticTextDuration2 = new wxStaticText( this, wxID_ANY, wxT("Minutes"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticTextDuration2->Wrap( -1 );
-	bSizer14111111->Add( m_staticTextDuration2, 0, wxALL|wxEXPAND, 5 );
+	m_static_text_countup2 = new wxStaticText( this, wxID_ANY, wxT("Minutes"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_static_text_countup2->Wrap( -1 );
+	bSizer14111111->Add( m_static_text_countup2, 0, wxALL|wxEXPAND, 5 );
 
 
 	bSizerMain->Add( bSizer14111111, 0, wxEXPAND, 5 );
 
 	bSizerCountdown = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticTextCD = new wxStaticText( this, wxID_ANY, wxT("Count \nDown"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticTextCD->Wrap( -1 );
-	bSizerCountdown->Add( m_staticTextCD, 0, wxALL|wxEXPAND, 5 );
+	m_static_text_countdown = new wxStaticText( this, wxID_ANY, wxT("Count \nDown"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_static_text_countdown->Wrap( -1 );
+	bSizerCountdown->Add( m_static_text_countdown, 0, wxALL|wxEXPAND, 5 );
 
-	wxString m_choiceCDChoices[] = { wxT("0") };
-	int m_choiceCDNChoices = sizeof( m_choiceCDChoices ) / sizeof( wxString );
-	m_choiceCD = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choiceCDNChoices, m_choiceCDChoices, 0|wxALWAYS_SHOW_SB );
-	m_choiceCD->SetSelection( 0 );
-	m_choiceCD->SetFont( wxFont( 14, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
+	wxString m_choice_countdownChoices[] = { wxT("0") };
+	int m_choice_countdownNChoices = sizeof( m_choice_countdownChoices ) / sizeof( wxString );
+	m_choice_countdown = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_countdownNChoices, m_choice_countdownChoices, 0|wxALWAYS_SHOW_SB );
+	m_choice_countdown->SetSelection( 0 );
+	m_choice_countdown->SetFont( wxFont( 14, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
 
-	bSizerCountdown->Add( m_choiceCD, 1, wxALL|wxEXPAND, 5 );
+	bSizerCountdown->Add( m_choice_countdown, 1, wxALL|wxEXPAND, 5 );
 
-	m_staticTextCD2 = new wxStaticText( this, wxID_ANY, wxT("Minutes"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticTextCD2->Wrap( -1 );
-	bSizerCountdown->Add( m_staticTextCD2, 0, wxALL|wxEXPAND, 5 );
+	m_static_text_countdown2 = new wxStaticText( this, wxID_ANY, wxT("Minutes"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_static_text_countdown2->Wrap( -1 );
+	bSizerCountdown->Add( m_static_text_countdown2, 0, wxALL|wxEXPAND, 5 );
 
 
 	bSizerMain->Add( bSizerCountdown, 0, wxEXPAND, 5 );
@@ -117,21 +117,21 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	wxBoxSizer* bSizer141111111;
 	bSizer141111111 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticTextRepeat = new wxStaticText( this, wxID_ANY, wxT("Repeat    "), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticTextRepeat->Wrap( -1 );
-	bSizer141111111->Add( m_staticTextRepeat, 0, wxALL|wxEXPAND, 5 );
+	m_static_text_repeat = new wxStaticText( this, wxID_ANY, wxT("Repeat    "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_static_text_repeat->Wrap( -1 );
+	bSizer141111111->Add( m_static_text_repeat, 0, wxALL|wxEXPAND, 5 );
 
-	wxString m_choiceRepeatChoices[] = { wxT("1"), wxT("10"), wxT("15"), wxT("20"), wxT("30"), wxT("60") };
-	int m_choiceRepeatNChoices = sizeof( m_choiceRepeatChoices ) / sizeof( wxString );
-	m_choiceRepeat = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choiceRepeatNChoices, m_choiceRepeatChoices, 0|wxALWAYS_SHOW_SB );
-	m_choiceRepeat->SetSelection( 0 );
-	m_choiceRepeat->SetFont( wxFont( 14, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
+	wxString m_choice_repeatChoices[] = { wxT("1"), wxT("10"), wxT("15"), wxT("20"), wxT("30"), wxT("60") };
+	int m_choice_repeatNChoices = sizeof( m_choice_repeatChoices ) / sizeof( wxString );
+	m_choice_repeat = new wxChoice( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_choice_repeatNChoices, m_choice_repeatChoices, 0|wxALWAYS_SHOW_SB );
+	m_choice_repeat->SetSelection( 0 );
+	m_choice_repeat->SetFont( wxFont( 14, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
 
-	bSizer141111111->Add( m_choiceRepeat, 0, wxALL|wxEXPAND, 5 );
+	bSizer141111111->Add( m_choice_repeat, 0, wxALL|wxEXPAND, 5 );
 
-	m_staticTextRepeat2 = new wxStaticText( this, wxID_ANY, wxT("Minutes"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticTextRepeat2->Wrap( -1 );
-	bSizer141111111->Add( m_staticTextRepeat2, 0, wxALL|wxEXPAND, 5 );
+	m_static_text_repeat2 = new wxStaticText( this, wxID_ANY, wxT("Minutes"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_static_text_repeat2->Wrap( -1 );
+	bSizer141111111->Add( m_static_text_repeat2, 0, wxALL|wxEXPAND, 5 );
 
 
 	bSizerMain->Add( bSizer141111111, 0, wxEXPAND, 5 );
@@ -142,10 +142,10 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	wxBoxSizer* bSizer14;
 	bSizer14 = new wxBoxSizer( wxVERTICAL );
 
-	m_textTime = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	m_textTime->SetFont( wxFont( 14, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
+	m_text_time = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_text_time->SetFont( wxFont( 14, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
 
-	bSizer14->Add( m_textTime, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
+	bSizer14->Add( m_text_time, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5 );
 
 
 	bSizerMain->Add( bSizer14, 0, wxALIGN_CENTER_HORIZONTAL|wxEXPAND, 5 );
@@ -177,25 +177,29 @@ m_Dialog::m_Dialog( wxWindow* parent, wxWindowID id, const wxString& title, cons
 	this->SetSizer( bSizerMain );
 	this->Layout();
 	bSizerMain->Fit( this );
-	m_timer4.SetOwner( this, m_timer4.GetId() );
-	m_timer2.SetOwner( this, m_timer2.GetId() );
-	m_timer3.SetOwner( this, m_timer3.GetId() );
-	m_timer1.SetOwner( this, m_timer1.GetId() );
+	m_timer_stopwatch.SetOwner( this, m_timer_stopwatch.GetId() );
+	m_timer_repeat.SetOwner( this, m_timer_repeat.GetId() );
+	m_timer_clock.SetOwner( this, m_timer_clock.GetId() );
+	m_timer_countdown.SetOwner( this, m_timer_countdown.GetId() );
+	m_timer_countup.SetOwner( this, m_timer_countup.GetId() );
+	m_timer_alarm.SetOwner( this, m_timer_alarm.GetId() );
 
 	this->Centre( wxBOTH );
 
 	// Connect Events
 	this->Connect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( m_Dialog::OnClose ) );
 	this->Connect( wxEVT_LEFT_DCLICK, wxMouseEventHandler( m_Dialog::OnDLeftClick ) );
-	m_checkBoxDuration->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnDuration ), NULL, this );
-	m_checkBoxCountdown->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnCountdown ), NULL, this );
-	m_checkBoxRepeat->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnRepeat ), NULL, this );
+	m_checkbox_countup->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnCountUp ), NULL, this );
+	m_checkbox_countdown->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnCountDown ), NULL, this );
+	m_checkbox_repeat->Connect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnRepeat ), NULL, this );
 	m_button3111->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( m_Dialog::OnStartTimer ), NULL, this );
 	m_button31111->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( m_Dialog::OnStopTimer ), NULL, this );
-	this->Connect( m_timer4.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer4 ) );
-	this->Connect( m_timer2.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnClock ) );
-	this->Connect( m_timer3.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer3 ) );
-	this->Connect( m_timer1.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer ) );
+	this->Connect( m_timer_stopwatch.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimerStopwatch ) );
+	this->Connect( m_timer_repeat.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimerRepeat ) );
+	this->Connect( m_timer_clock.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimerClock ) );
+	this->Connect( m_timer_countdown.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimerCountDown ) );
+	this->Connect( m_timer_countup.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimerCountUp ) );
+	this->Connect( m_timer_alarm.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimerAlarm ) );
 }
 
 m_Dialog::~m_Dialog()
@@ -203,14 +207,16 @@ m_Dialog::~m_Dialog()
 	// Disconnect Events
 	this->Disconnect( wxEVT_CLOSE_WINDOW, wxCloseEventHandler( m_Dialog::OnClose ) );
 	this->Disconnect( wxEVT_LEFT_DCLICK, wxMouseEventHandler( m_Dialog::OnDLeftClick ) );
-	m_checkBoxDuration->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnDuration ), NULL, this );
-	m_checkBoxCountdown->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnCountdown ), NULL, this );
-	m_checkBoxRepeat->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnRepeat ), NULL, this );
+	m_checkbox_countup->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnCountUp ), NULL, this );
+	m_checkbox_countdown->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnCountDown ), NULL, this );
+	m_checkbox_repeat->Disconnect( wxEVT_COMMAND_CHECKBOX_CLICKED, wxCommandEventHandler( m_Dialog::OnRepeat ), NULL, this );
 	m_button3111->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( m_Dialog::OnStartTimer ), NULL, this );
 	m_button31111->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( m_Dialog::OnStopTimer ), NULL, this );
-	this->Disconnect( m_timer4.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer4 ) );
-	this->Disconnect( m_timer2.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnClock ) );
-	this->Disconnect( m_timer3.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer3 ) );
-	this->Disconnect( m_timer1.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimer ) );
+	this->Disconnect( m_timer_stopwatch.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimerStopwatch ) );
+	this->Disconnect( m_timer_repeat.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimerRepeat ) );
+	this->Disconnect( m_timer_clock.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimerClock ) );
+	this->Disconnect( m_timer_countdown.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimerCountDown ) );
+	this->Disconnect( m_timer_countup.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimerCountUp ) );
+	this->Disconnect( m_timer_alarm.GetId(), wxEVT_TIMER, wxTimerEventHandler( m_Dialog::OnTimerAlarm ) );
 
 }
