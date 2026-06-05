@@ -1,6 +1,6 @@
 # ~~~
 # Summary:      Local, non-generic plugin setup
-# Copyright (c) 2020-2021 Mike Rossiter
+# Copyright (c) 2020-2026 Mike Rossiter
 # License:      GPLv3+
 # ~~~
 
@@ -32,7 +32,7 @@ set(OCPN_RELEASE_REPO
 # -------  Plugin setup --------
 #
 set(PKG_NAME e_timer_pi)
-set(PKG_VERSION  1.0.0)
+set(PKG_VERSION  1.1.0)
 set(PKG_PRERELEASE "")  # Empty, or a tag like 'beta'
 
 set(DISPLAY_NAME e_timer)    # Dialogs, installer artifacts, ...
