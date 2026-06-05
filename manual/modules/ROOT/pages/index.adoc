@@ -51,6 +51,13 @@ image::7.png[]
 
 To cancel the alarm uncheck the repeat checkbox.
 
+== Stopwatch
+Press "Start". The stopwatch starts counting up.
+
+image::8.png[]
+
+Press "Stop" to stop the stopwatch. Select one of the checkboxes to reset the stopwatch to zero.
+
 == Enhancements or Problems
 
 Please report these by raising an issue in the github repository:
