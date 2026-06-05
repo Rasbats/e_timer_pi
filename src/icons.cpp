@@ -11,6 +11,7 @@ wxBitmap *_img_e_timer_pi;
 wxBitmap *_img_Timer;
 
 #ifdef ocpnUSE_SVG
+#include <cstdint>
 #include "ocpn_plugin.h"
 wxString _svg_timer;
 wxString _svg_timer_toggled;

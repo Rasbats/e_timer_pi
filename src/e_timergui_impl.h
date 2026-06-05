@@ -35,6 +35,7 @@
 #include "e_timer_pi.h"
 #include "e_timergui.h"
 #include "wx/window.h"
+#include <cstdint>
 #include "ocpn_plugin.h"
 #include <wx/menu.h>
 
